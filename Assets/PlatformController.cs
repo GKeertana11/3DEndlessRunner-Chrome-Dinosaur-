@@ -8,13 +8,14 @@ public class PlatformController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        platformSize = transform.localScale.x;
-        Debug.Log(platformSize);
+//platformSize = transform.localScale.x;
+       // Debug.Log(platformSize);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
+    
 }

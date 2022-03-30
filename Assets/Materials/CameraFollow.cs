@@ -7,14 +7,14 @@ public class CameraFollow : MonoBehaviour
    // public GameObject player;
  public  playerMovement player;
    public Camera cam;
-    public Vector3 offset;
+   // public Vector3 offset;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        offset.z= transform.position.z - player.transform.position.z;
-        // player = GameObject.Find("Player").GetComponent<playerMovement>();
+        
+        player = GameObject.Find("Player").GetComponent<playerMovement>();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         if (player != null)
         {
 
-            cam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y,offset.z);
+            cam.transform.position = new Vector3(player.transform.position.x, cam.transform.position.y,cam.transform.position.z);
                 
         }
     }

@@ -10,11 +10,11 @@ public class SpawnManager : MonoBehaviour
     public float safeMargin;
     public GameObject[] platform;
     public float spawnPoint = 0;
-   public GameObject currentPlatform;
+   
     // Start is called before the first frame update
     void Start()
     {
-        currentPlatform = Instantiate(platform[0], currentPlatform.transform.position, Quaternion.identity);
+       // currentPlatform = Instantiate(platform[0], currentPlatform.transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -26,13 +26,23 @@ public class SpawnManager : MonoBehaviour
 
         // Instantiate(obstacle,transform.position+offset,Quaternion.identity);
 
+       
+            int k = Random.Range(0,platform.Length);
+            if(spawnPoint<5)
+            {
+                k = 0;
+            }
         while (spawnPoint < player.transform.position.x + safeMargin)
         {
-            int k = Random.Range(0, platform.Length);
-            currentPlatform = Instantiate(platform[k],currentPlatform.transform.position, Quaternion.identity);
-            PlatformController platformController = currentPlatform.GetComponent<PlatformController>();
-            currentPlatform.transform.position = new Vector3(spawnPoint + (platformController.platformSize / 2),0,0);
+            GameObject currentPlatform = Instantiate(platform[k],transform.position, Quaternion.identity);
+            PlatformController platform1 = currentPlatform.GetComponent<PlatformController>();
+            currentPlatform.transform.position = new Vector3(spawnPoint + platform1.GetComponentInChildren<Transform>().localScale.x/2,0,0);
+
+            // spawnPoint = 35;
+            spawnPoint = spawnPoint + platform1.GetComponentInChildren<Transform>().localScale.x;
+
                 }
             
     }
 }
+
